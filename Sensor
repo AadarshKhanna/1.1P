@@ -1,0 +1,24 @@
+const int Pin = 2;  // It is the Digital pin connected to the motion sensor
+const int ledPin = 13;    // LED pin used for showing if motion has been captured
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(Pin, INPUT);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // First we will read the motion sensor input
+  int Value = digitalRead(Pin);
+  
+  // Update system status based on motion sensor input
+  if (Value == HIGH) {
+    Serial.println("Motion has been Detected!");
+    digitalWrite(ledPin, HIGH);  // Turn on the LED
+  } else {
+    Serial.println("No Motion Detected.");
+    digitalWrite(ledPin, LOW);   // Turn off the LED
+  }
+
+  delay(500);
+}
